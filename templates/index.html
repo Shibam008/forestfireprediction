@@ -1,11 +1,92 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FWI Prediction Project</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#0f172a;
+    color:white;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    text-align:center;
+    background:#1e293b;
+    padding:50px;
+    border-radius:12px;
+    width:600px;
+    box-shadow:0px 0px 30px rgba(0,0,0,0.6);
+}
+
+h1{
+    margin-bottom:10px;
+    font-size:36px;
+}
+
+.subtitle{
+    color:#cbd5e1;
+    font-size:16px;
+    margin-bottom:25px;
+}
+
+.description{
+    color:#cbd5e1;
+    line-height:1.6;
+    margin-bottom:35px;
+}
+
+.button{
+    display:inline-block;
+    padding:14px 28px;
+    background:#3b82f6;
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.button:hover{
+    background:#2563eb;
+}
+
+</style>
+
 </head>
+
 <body>
-    <center><h1>Linear Regression</h1></center>
+
+<div class="container">
+
+<h1>🔥 Fire Weather Index Prediction</h1>
+
+<p class="subtitle">
+Welcome to the Machine Learning Web Application
+</p>
+
+<p class="description">
+This project predicts the <b>Fire Weather Index (FWI)</b> using meteorological
+parameters such as temperature, humidity, wind speed, rainfall, and fuel moisture codes.
+The model is trained using the <b>Algerian Forest Fires Dataset</b> and helps estimate
+the potential risk of forest fire occurrence based on environmental conditions.
+</p>
+
+<a href="/predictdata" class="button">
+Start FWI Prediction
+</a>
+
+</div>
+
 </body>
 </html>
