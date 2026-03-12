@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FWI Prediction</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#0f172a;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:#1e293b;
+    padding:35px;
+    border-radius:10px;
+    width:520px;
+    box-shadow:0px 0px 25px rgba(0,0,0,0.6);
+}
+
+h1{
+    text-align:center;
+    color:white;
+    margin-bottom:10px;
+}
+
+.description{
+    color:#cbd5e1;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.parameters{
+    color:#cbd5e1;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.parameters ul{
+    padding-left:18px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+input{
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    background:#334155;
+    color:white;
+    font-size:14px;
+}
+
+input::placeholder{
+    color:#cbd5e1;
+}
+
+button{
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:#3b82f6;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2563eb;
+}
+
+.result{
+    text-align:center;
+    color:#22c55e;
+    margin-top:15px;
+    font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>FWI Prediction System</h1>
+
+<div class="description">
+This web application predicts the <b>Fire Weather Index (FWI)</b> using meteorological
+and environmental data from the <b>Algerian Forest Fires Dataset</b>.
+The Fire Weather Index is an important indicator used to estimate the
+potential intensity of forest fires based on weather conditions.
+By providing the environmental parameters below, the machine learning
+model estimates the FWI value which indicates the fire risk level.
+</div>
+
+<div class="parameters">
+<b>Input Parameters Explanation:</b>
+<ul>
+<li><b>Temperature</b> – Air temperature in degrees Celsius.</li>
+<li><b>RH</b> – Relative Humidity (%), representing moisture in the air.</li>
+<li><b>Ws</b> – Wind speed (km/h), affecting fire spread.</li>
+<li><b>Rain</b> – Amount of rainfall (mm).</li>
+<li><b>FFMC</b> – Fine Fuel Moisture Code indicating surface fuel dryness.</li>
+<li><b>DMC</b> – Duff Moisture Code representing moisture in decomposed organic material.</li>
+<li><b>ISI</b> – Initial Spread Index estimating the expected rate of fire spread.</li>
+<li><b>Classes</b> – Fire occurrence classification (fire or not fire).</li>
+<li><b>Region</b> – Geographic region indicator from the dataset.</li>
+</ul>
+</div>
+
+<form action="{{ url_for('predict_datapoint') }}" method="post">
+
+<input type="number" step="any" name="Temperature" placeholder="Temperature (°C)" required>
+<input type="number" step="any" name="RH" placeholder="Relative Humidity (%)" required>
+<input type="number" step="any" name="Ws" placeholder="Wind Speed (km/h)" required>
+<input type="number" step="any" name="Rain" placeholder="Rain (mm)" required>
+<input type="number" step="any" name="FFMC" placeholder="FFMC" required>
+<input type="number" step="any" name="DMC" placeholder="DMC" required>
+<input type="number" step="any" name="ISI" placeholder="ISI" required>
+<input type="number" step="any" name="Classes" placeholder="Classes (0 or 1)" required>
+<input type="number" step="any" name="Region" placeholder="Region (0 or 1)" required>
+
+<button type="submit">Predict Fire Weather Index</button>
+
+</form>
+
+<div class="result">
+THE FWI prediction is = {{results}}
+</div>
+
+</div>
+
+</body>
+</html>
